@@ -5,6 +5,10 @@ pkgs.mkShell {
     # PDF tools
     pdftk
     poppler_utils
+    # For presentations
+    kitty
+    mermaid-cli
+    presenterm
 
     # Python with WeasyPrint
     (python313.withPackages (ps: [
