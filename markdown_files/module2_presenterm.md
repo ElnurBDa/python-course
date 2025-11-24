@@ -65,7 +65,9 @@ result = None
 
 Input & Output
 =========================
+<!-- column_layout: [1, 2, 1] -->
 
+<!-- column: 0 -->
 ### Output (stdout)
 ```python +exec
 name = "ElnurBDa"
@@ -74,6 +76,9 @@ print("User:", name)
 print(f"The F String is used by {name}")
 ```
 
+<!-- column: 1 -->
+![](assets/input-output.png)
+<!-- column: 2 -->
 ### Input (stdin)
 ```python
 name = input("Enter your name: ")
@@ -85,6 +90,7 @@ Convert for numeric use:
 ```python
 age = int(input("Enter age: "))
 ```
+<!-- reset_layout -->
 
 ---
 

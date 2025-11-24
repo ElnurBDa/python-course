@@ -236,7 +236,7 @@ Choosing the Right Data Structure
 
 ---
 
-Mini Task — Apply Everything
+Mini Task 
 ============================
 Create a script that:
 
