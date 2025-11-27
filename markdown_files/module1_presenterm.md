@@ -15,6 +15,16 @@ Programming is the process of giving instructions to a computer in a language it
 
 Computers themselves only understand **machine code**, so programming languages allow humans to write instructions more easily.
 
+```mermaid +render
+flowchart LR
+    A[Human idea] --> B[High-level code]
+    B --> C[Compiler / Interpreter]
+    C --> D[Assembly / Machine code]
+    D --> E[CPU executes bits]
+```
+
+Think of it as translation layers that convert human steps into electrical signals.
+
 <!-- column_layout: [1, 1] -->
 
 <!-- column: 0 -->
@@ -201,6 +211,24 @@ Goal: describe steps **clearly** so that even a computer could follow them.
 
 ---
 
+Algorithm Design Checklist
+==========================
+
+| Step            | Questions to ask                          |
+|-----------------|-------------------------------------------|
+| Inputs          | What data do I need? What format?         |
+| Outputs         | What should be produced?                  |
+| Steps           | In what order? Any loops or decisions?    |
+| Edge cases      | What if input is missing/invalid?         |
+| Representation  | Pseudocode, flowchart, or plain text?     |
+
+Comparison:
+- **Pseudocode** — quick, language-agnostic
+- **Flowchart** — great for visual branching
+- **Plain text** — fast brainstorming, less structure
+
+---
+
 Installing Python
 =================
 Check whether Python is installed:
@@ -263,5 +291,3 @@ python3 hello.py
 ```
 
 ---
-
-
