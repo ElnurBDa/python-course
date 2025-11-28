@@ -265,3 +265,93 @@ Create a project with:
 
 ---
 
+Objects & Classes — Why They Matter
+===================================
+
+Functions are perfect for **single actions**. Classes help when you need to model **entities** (users, sensors, tickets) that carry both data and behavior.
+
+- **Object** = “thing” with attributes + methods  
+- **Class** = blueprint describing what every object of that type should have  
+
+Analogy:
+- Class = recipe for `User`  
+- Object = actual user baked from that recipe  
+
+Use classes when you keep passing the same fields around or when multiple behaviors belong to the same piece of data.
+
+---
+
+Defining a Class
+================
+
+```python +exec
+class User:
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+        self.active = True
+
+    def deactivate(self):
+        self.active = False
+
+user = User("alice", "alice@example.com")
+print(user.username, user.active)
+user.deactivate()
+print(user.active)
+```
+
+Notes:
+- `__init__` runs every time you call `User(...)`
+- `self` points to the current object so you can store/read attributes
+- Methods are normal functions defined inside the class
+
+---
+
+Attributes vs Methods
+=====================
+
+| Concept    | Purpose                         | Example                       |
+|------------|---------------------------------|-------------------------------|
+| Attribute  | Data stored on the object       | `user.email`, `user.active`   |
+| Method     | Action using that data          | `user.deactivate()`           |
+| Class attr | Shared for all instances        | `class User: role = "student"`|
+
+Guidelines:
+- Keep attributes small and descriptive
+- Use methods when behavior depends on the object’s state
+- Return values from methods when you need reusable data (`describe()`)
+
+---
+
+Classes vs Simple Functions
+===========================
+
+```text
+Prefer simple functions when:
+  - Logic is stateless
+  - You just manipulate inputs/outputs quickly
+  - The helper stands on its own (e.g., convert units)
+
+Prefer classes when:
+  - You repeatedly use the same bundle of data
+  - Multiple behaviors belong to that bundle
+  - You want to hide implementation details behind a clean API
+```
+
+You can mix both patterns: functions orchestrate flows, classes encapsulate objects.
+
+---
+
+Mini Task — Task Manager OOP
+============================
+
+Inside `projects/task_manager/`:
+
+1. Create `task.py` with a `Task` class containing `title`, `completed`, `priority="normal"`, and methods `mark_done()` plus `describe()` returning a formatted summary.  
+2. Create `main.py` that instantiates several tasks, stores them in a list, and prints each description.  
+3. Stretch goal: add a `TaskList` class with `add_task()`, `list_pending()` to practice classes working together.
+
+This OOP layer will make it easier to structure file, database, and web projects in upcoming modules.
+
+---
+

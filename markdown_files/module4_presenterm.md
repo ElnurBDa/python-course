@@ -217,9 +217,36 @@ for i in range(3):
     pass
 ```
 
+---
+
+Loop Patterns & Comprehensions
+==============================
+
+Often we use loops to **build new lists** from old ones.
+
+Classic pattern:
+
 ```python +exec
-for i in range(3):
+nums = [1, 2, 3, 4, 5]
+evens = []
+
+for n in nums:
+    if n % 2 == 0:
+        evens.append(n)
+
+print("evens:", evens)
 ```
+
+Same logic using a **list comprehension** (from Module 3):
+
+```python +exec
+nums = [1, 2, 3, 4, 5]
+evens = [n for n in nums if n % 2 == 0]
+print("evens:", evens)
+```
+
+Use whichever is **clearer** to you and your team; for multiple complex steps, prefer the classic loop.
+
 ---
 
 Example

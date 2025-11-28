@@ -12,18 +12,20 @@ Module 8 — Web Basics
 =====================
 We connect Python skills to the web stack:
 
-- What happens when you open a URL
-- HTML structure & tags
-- HTTP requests/responses
-- APIs & JSON payloads
-- Consuming APIs with `requests`
-- Serving static pages with Python
+We will go in three stages:
+
+1. **Web pages** — HTML, CSS, JavaScript, and how the browser talks to a server  
+2. **HTTP & APIs** — requests, responses, status codes, and JSON  
+3. **Python as a web client/server** — using `requests` and serving simple pages  
+
+Keep this question in mind:  
+> “What exactly is traveling over the network right now — HTML or JSON?”
 
 ---
 
 How the Web Works
 =================
-Workflow from browser to server:
+Step‑by‑step workflow from browser to server:
 
 1. User enters `https://example.com`
 2. Browser resolves domain → IP
@@ -44,6 +46,20 @@ sequenceDiagram
     Server-->>Browser: HTML + assets
     Browser-->>User: render page
 ```
+
+---
+
+Section 1 — Web Pages (HTML, CSS, JS)
+=====================================
+
+In this first part we focus on **how a page is built and served**.
+Do not worry about APIs or JSON yet — just think in terms of:
+
+- HTML = structure & content  
+- CSS = visual style  
+- JavaScript = interactivity in the browser  
+
+Later sections will reuse this when we load data from APIs instead of hard‑coding it.
 
 ---
 
@@ -215,6 +231,20 @@ Challenge: create `index.html` with header, paragraph, list, and image, then ser
 
 ---
 
+Section 2 — HTTP & APIs
+=======================
+
+Now that you know what a **page** looks like, we zoom in on the **conversation** between browser and server.
+
+Questions to keep in mind:
+- Who is the **client** in this example? Who is the **server**?  
+- What is the **URL**, what is the **method** (GET/POST/...), and what is inside the **body** (if any)?  
+- Is the response returning **HTML** or **JSON**?  
+
+Once this feels comfortable, we will replace “browser” with **Python code** using `requests`.
+
+---
+
 HTTP — The Conversation Rules
 =============================
 HTTP (HyperText Transfer Protocol) defines how clients & servers talk — like a script both sides follow.
@@ -361,6 +391,21 @@ Analogy: shipping boxes inside a truck — arrays hold boxes, each box (object) 
 
 ---
 
+From HTTP & JSON to Python Code
+===============================
+
+Let’s connect the dots:
+
+1. Browser or client sends an **HTTP request** (method + path + headers + body).  
+2. Server sends back an **HTTP response** with a **status code** and **body**.  
+3. If `Content-Type: application/json`, the body contains **JSON**, which feels like Python `dict` + `list`.  
+4. Our Python script with `requests` plays the role of the **client** instead of the browser.  
+
+So when you see `response.json()` later, imagine:
+> “Take the JSON body from the HTTP response and turn it into Python dictionaries/lists I can work with.”
+
+---
+
 Inspecting APIs
 ===============
 Tools:
@@ -394,9 +439,10 @@ print("First task title:", tasks[0]["title"] if tasks else "No tasks yet")
 ```
 
 Notes:
-- `timeout` prevents hanging forever
-- Use `response.raise_for_status()` to throw for errors
-- `response.text` vs `response.json()` depending on content type
+- `timeout` prevents hanging forever (network problems)
+- `response.status_code` shows the HTTP status (200, 404, 500, …)
+- `response.raise_for_status()` throws an exception for 4xx/5xx errors  
+- `response.text` is the raw string body, `response.json()` parses JSON into Python types
 
 ---
 
@@ -423,6 +469,22 @@ print("Sample record:", data[0] if data else "None")
 Questions to consider:
 - What happens if you forget `.json()`?
 - How would you handle an empty list or missing key?
+
+---
+
+Section 3 — Python as Web Client & Simple Server
+================================================
+
+In this final part we:
+
+1. Use Python + `requests` as an **HTTP client** talking to the Tasks API.  
+2. Use `http.server` (and a tiny custom server) as a **simple HTTP server** to serve static HTML.  
+
+Key mental model:
+- Browser and Python scripts are just **different HTTP clients**.  
+- Servers (your simple Python server, or the Tasks API on port 3000) all speak the same HTTP “language”.  
+
+When in doubt, go back to the HTTP request/response examples and map each line to what `requests` or the browser is doing.
 
 ---
 

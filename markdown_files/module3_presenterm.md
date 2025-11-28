@@ -45,6 +45,31 @@ print(numbers[1:3])
 
 ---
 
+List Comprehensions
+===========================
+List comprehensions are a **compact way** to build new lists from existing data.
+
+Basic pattern:
+
+```python +exec
+numbers = [1, 2, 3, 4, 5]
+
+squares = [n * n for n in numbers]
+evens = [n for n in numbers if n % 2 == 0]
+
+print("squares:", squares)
+print("evens:", evens)
+```
+
+They are great for:
+- simple transformations  
+- filtering values  
+- avoiding manual `for` + `.append()` boilerplate  
+
+Rule of thumb: if the logic fits in **one short line**, a comprehension is OK; otherwise, use a normal loop for readability.
+
+---
+
 List Characteristics
 ====================
 

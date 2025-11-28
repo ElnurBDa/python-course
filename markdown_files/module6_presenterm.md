@@ -188,6 +188,34 @@ Flow:
 3. Program continues instead of crashing
 
 ---
+
+Error Handling Patterns in Bigger Scripts
+=========================================
+
+As programs grow, we want **clear places** where errors are handled.
+
+Typical pattern:
+
+```python
+def run():
+    try:
+        # 1) read config
+        # 2) open files / database
+        # 3) main logic
+        ...
+    except FileNotFoundError as e:
+        print("Missing file:", e)
+    except ValueError as e:
+        print("Bad data:", e)
+```
+
+Benefits:
+- All top‑level errors are handled in **one place**  
+- Internal functions can either handle or **raise** exceptions  
+
+In real projects we often move these messages to **logging** instead of `print()`.
+
+---
 O_o
 ======================
 
