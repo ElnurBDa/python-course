@@ -308,17 +308,20 @@ API = Application Programming Interface.
 - HTTP APIs expose data/actions via URLs, verbs, and JSON payloads.
 - Good APIs document their menu (endpoints, parameters, status codes).
 
-Example: [ExchangeRate API](https://exchangerate.host/#/)
+Example: `Tasks API` served from `http://localhost:3000`
 
-| Endpoint              | Method | Description             |
-|-----------------------|--------|-------------------------|
-| `/latest?base=USD`    | GET    | Latest currency rates   |
-| `/convert?from=USD...`| GET    | Convert amount          |
-| `/timeseries?...`     | GET    | Historical data         |
+| Endpoint             | Method | Description                                      |
+|----------------------|--------|--------------------------------------------------|
+| `/api/tasks?completed=true` | GET    | List tasks filtered by completion flag         |
+| `/api/tasks`         | POST   | Create a new task with title/description flags  |
+| `/api/tasks/{id}`    | GET    | Fetch one task by its numeric identifier        |
+| `/api/tasks/{id}`    | PUT    | Update title, description, or completed status  |
+| `/api/tasks/{id}`    | DELETE | Remove the task forever                         |
+| `/api/health`        | GET    | Quick health check for the service              |
 
 Menu analogy:
 - Endpoint = dish name
-- Query params = customization
+- Query params/body = customization
 - Response JSON = meal you receive
 
 ---
@@ -365,11 +368,12 @@ Tools:
 - Browser dev tools → Network tab
 - `curl` in terminal:
 ```bash
-curl -X GET "https://api.exchangerate.host/latest"
+curl -G "http://localhost:3000/api/tasks" \
+  --data-urlencode "completed=true"
 ```
 - Postman, Bruno, or Insomnia for graphical testing
 
-Always check: URL, method, headers, body, response code, payload.
+Always check: URL, method, headers, body, response code, payload. Tasks API also requires you to pass `completed` as a query parameter when listing.
 
 ---
 
@@ -379,12 +383,14 @@ Python `requests` Basics
 ```python +exec
 import requests
 
-url = "https://api.exchangerate.host/latest?base=USD"
-response = requests.get(url, timeout=5)
+url = "http://localhost:3000/api/tasks"
+params = {"completed": "false"}  # API requires this flag
+response = requests.get(url, params=params, timeout=5)
 
 print("Status:", response.status_code)
-data = response.json()
-print("EUR rate:", data["rates"]["EUR"])
+response.raise_for_status()
+tasks = response.json()
+print("First task title:", tasks[0]["title"] if tasks else "No tasks yet")
 ```
 
 Notes:
@@ -401,15 +407,22 @@ Checkpoint — Your First API Call
 3. Run:
 ```python
 import requests
-data = requests.get("https://api.exchangerate.host/latest", timeout=5).json()
-print("Base:", data["base"])
-print("AZN rate:", data["rates"]["AZN"])
+
+BASE_URL = "http://localhost:3000/api/tasks"
+data = requests.get(
+    BASE_URL,
+    params={"completed": "true"},
+    timeout=5,
+).json()
+
+print("Total completed tasks:", len(data))
+print("Sample record:", data[0] if data else "None")
 ```
 4. Screenshot output for homework
 
 Questions to consider:
 - What happens if you forget `.json()`?
-- How would you handle a missing key?
+- How would you handle an empty list or missing key?
 
 ---
 
@@ -436,16 +449,22 @@ Sending Data with `requests`
 ```python +exec
 import requests
 
-payload = {"username": "Elnur", "score": 95}
+payload = {
+    "title": "Draft Module 8 slides",
+    "description": "Cover Tasks API examples",
+    "completed": False,
+}
 
 resp = requests.post(
-    "https://httpbin.org/post",
+    "http://localhost:3000/api/tasks",
     json=payload,
-    headers={"Authorization": "Bearer TOKEN"},
     timeout=5,
 )
 
-print("Server echoed:", resp.json()["json"])
+resp.raise_for_status()
+created = resp.json()
+print("New task id:", created["id"])
+print("Completed flag:", created["completed"])
 ```
 
 `json=...` auto converts dict to JSON & sets `Content-Type: application/json`.
@@ -514,13 +533,12 @@ Run `python server.py` from the folder containing `website/`.
 
 Mini Project
 ============
-Build a simple dashboard:
+Build a simple task dashboard backed by the local API:
 
-1. Create `index.html` displaying latest crypto price.
-2. Write `fetch_price.py` that uses `requests` to fetch JSON from a public API.
-3. Save data to `data.json`.
-4. Serve folder via `python -m http.server`.
-
+1. Create `index.html` that renders a table of tasks from `data.json`.
+2. Write `fetch_tasks.py` that calls `http://localhost:3000/api/tasks?completed=false` and saves the JSON payload.
+3. Add a second button on the page that loads tasks marked as completed (read from another JSON file or switch endpoints dynamically).
+4. Serve the folder via `python -m http.server` and demo reloading after rerunning the fetch script.
 
 ![](assets/html-css-meme.jpg)
 

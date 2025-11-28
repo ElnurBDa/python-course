@@ -13,12 +13,13 @@ pkgs.mkShell {
     # Python with WeasyPrint
     (python313.withPackages (ps: [
       ps.weasyprint
+      ps.requests
+      ps.flask
     ]))
   ];
 
   shellHook = ''
     echo "✅ Development shell ready."
-    echo "Use 'pdftk --version' to confirm it's installed."
   '';
 }
 
