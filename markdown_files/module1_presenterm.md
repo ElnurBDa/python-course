@@ -176,8 +176,203 @@ Common examples in daily life:
 
 ---
 
+Algorithm Building Blocks
+=========================
+All algorithms are built from a few fundamental building blocks:
+
+1. **Sequence** — steps executed in order
+2. **Selection** — making decisions (if/else)
+3. **Iteration** — repeating steps (loops)
+4. **Variables** — storing data
+5. **Input/Output** — getting and displaying data
+
+These building blocks can be combined to solve any computational problem.
+
+---
+
+Sequence
+--------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[Start] --> B[Step 1]
+    B --> C[Step 2]
+    C --> D[Step 3]
+    D --> E[End]
+```
+<!-- column: 1 -->
+**Sequence** means executing steps one after another, in order.
+
+Example (Making coffee):
+1. Grind coffee beans
+2. Boil water
+3. Pour water over coffee
+4. Serve
+
+Each step must complete before the next begins.
+<!-- reset_layout -->
+
+---
+
+Selection (Conditionals)
+------------------------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[Start] --> B{Condition?}
+    B -->|True| C[Action A]
+    B -->|False| D[Action B]
+    C --> E[Continue]
+    D --> E
+    E --> F[End]
+```
+<!-- column: 1 -->
+**Selection** allows algorithms to make decisions based on conditions.
+
+Example:
+```text
+if temperature > 30:
+    print("It's hot!")
+else:
+    print("It's cool!")
+```
+
+The algorithm chooses different paths based on the condition.
+<!-- reset_layout -->
+
+---
+
+Iteration (Loops)
+-----------------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[Start] --> B[Initialize counter]
+    B --> C{Condition?}
+    C -->|True| D[Execute steps]
+    D --> E[Update counter]
+    E --> C
+    C -->|False| F[End]
+```
+<!-- column: 1 -->
+**Iteration** repeats a set of steps until a condition is met.
+
+Example (Count to 5):
+```text
+count = 1
+while count <= 5:
+    print(count)
+    count = count + 1
+```
+
+Loops help automate repetitive tasks efficiently.
+<!-- reset_layout -->
+
+---
+
+Variables and Data Storage
+--------------------------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[Input data] --> B[Store in variable]
+    B --> C[Use variable]
+    C --> D[Modify if needed]
+    D --> E[Output result]
+```
+<!-- column: 1 -->
+**Variables** store data that can be used and modified during algorithm execution.
+
+Example:
+```text
+name = "Alice"
+age = 25
+message = "Hello, " + name
+print(message)
+```
+
+Variables act as containers that hold values for later use.
+<!-- reset_layout -->
+
+---
+
+Input and Output
+----------------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[User/System] -->|Input| B[Algorithm]
+    B -->|Process| C[Algorithm]
+    C -->|Output| D[User/System]
+```
+<!-- column: 1 -->
+**Input** gets data from the user or system.
+**Output** displays or returns results.
+
+Example:
+```text
+name = input("Enter your name: ")
+print("Hello, " + name)
+```
+
+Input provides data to work with; output shows the results.
+<!-- reset_layout -->
+
+---
+
+Combining Building Blocks
+-------------------------
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+```mermaid +render
+flowchart TD
+    A[Start] --> B[Get input]
+    B --> C{Valid input?}
+    C -->|No| D[Show error]
+    D --> B
+    C -->|Yes| E[Initialize counter]
+    E --> F{Counter < limit?}
+    F -->|Yes| G[Process data]
+    G --> H[Update counter]
+    H --> F
+    F -->|No| I[Display output]
+    I --> J[End]
+```
+<!-- column: 1 -->
+Real algorithms combine multiple building blocks:
+
+This combines:
+- **Sequence**: steps in order
+- **Selection**: validation check
+- **Iteration**: processing loop
+- **Variables**: storing counter and data
+- **Input/Output**: getting data and displaying results
+<!-- reset_layout -->
+
+---
+
 Algorithm Examples
 ==================
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+**Making Tea** (Sequential Algorithm):
+
+```mermaid +render
+flowchart TD
+    A[Start] --> B[Boil water]
+    B --> C[Place tea bag in cup]
+    C --> D[Pour water]
+    D --> E[Wait 3-5 minutes]
+    E --> F[Remove tea bag]
+    F --> G[Drink]
+    G --> H[End]
+```
+<!-- column: 1 -->
 Real‑life algorithm example (Making Tea):
 
 1. Boil water
@@ -187,15 +382,7 @@ Real‑life algorithm example (Making Tea):
 5. Remove tea bag
 6. Drink
 
-Pseudocode example:
-
-```text
-input number
-if number > 0:
-    print("Positive")
-else:
-    print("Non-positive")
-```
+<!-- reset_layout -->
 
 ---
 
@@ -208,6 +395,37 @@ Write an algorithm for:
 3. Starting a computer
 
 Goal: describe steps **clearly** so that even a computer could follow them.
+
+---
+
+Logging into a Website — Solution
+==================================
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+**Logging into a Website** (Algorithm with Selection and Iteration):
+
+This algorithm demonstrates:
+- **Sequence**: steps executed in order
+- **Selection**: checking if credentials are valid
+- **Iteration**: option to try again if login fails
+
+<!-- column: 1 -->
+```mermaid +render
+flowchart TD
+    A[Start] --> B[Open website]
+    B --> C[Enter username]
+    C --> D[Enter password]
+    D --> E{Valid credentials?}
+    E -->|Yes| F[Access granted]
+    E -->|No| G[Show error message]
+    G --> H{Try again?}
+    H -->|Yes| C
+    H -->|No| I[End]
+    F --> J[Redirect to dashboard]
+    J --> I
+```
+
+<!-- reset_layout -->
 
 ---
 
