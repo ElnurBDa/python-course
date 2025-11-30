@@ -195,8 +195,6 @@ You live in London and next year you will be 37.
 Your favorite number 42 is even.
 ```
 
-This project consolidates most of Module 2 concepts before you meet lists and dicts.
-
 ---
 
 

@@ -509,3 +509,76 @@ python3 hello.py
 ```
 
 ---
+
+Virtual Environments 
+===============================
+
+Later modules will install packages like `requests`, Flask, etc.
+
+Without virtual environments:
+
+- Different projects may **fight over versions**  
+- You may not remember which scripts require which packages  
+
+With virtual environments:
+
+- Each project can have its **own dependencies**  
+- You can safely experiment without breaking other projects  
+
+We start using this pattern now so it feels natural later.
+
+---
+
+Creating and Activating a venv
+==============================
+
+Inside `projects/module1_hello/`:
+
+```bash
+python3 -m venv .venv
+```
+
+Activate it:
+
+```bash
+source .venv/bin/activate   # Linux/macOS
+# or on Windows (PowerShell):
+# .venv\Scripts\Activate.ps1
+```
+
+Your prompt should now show something like:
+
+```text
+(.venv) user@machine:~/.../module1_hello$
+```
+
+To deactivate later:
+
+```bash
+deactivate
+```
+
+---
+
+Installing a Test Package
+=========================
+
+While still inside the `(.venv)`:
+
+```bash
+pip install --upgrade pip
+pip install requests
+pip freeze
+```
+
+You should see `requests` and its dependencies listed.
+
+Optional: save them to `requirements.txt`:
+
+```bash
+pip freeze > requirements.txt
+```
+
+Now this project knows exactly **which versions** it uses.
+
+---
