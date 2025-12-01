@@ -31,7 +31,6 @@ Why use files?
 - Config files
 - Simple data exchange
 
-![](assets/db-vs-files.jpg)
 
 
 ---
@@ -65,13 +64,10 @@ Use `with` to open files — it auto‑closes them.
 # reading a text file
 path = "notes.txt"
 
-try:
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-        print("File content:")
-        print(content)
-except FileNotFoundError:
-    print("File not found:", path)
+with open(path, "r", encoding="utf-8") as f:
+    content = f.read()
+    print("File content:")
+    print(content)
 ```
 
 Benefits:
