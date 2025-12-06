@@ -58,7 +58,7 @@ Think of it like:
 - **Backup system** that keeps history
 
 ```mermaid +render
-flowchart TD
+flowchart LR
     A[Start Project] --> B[Make Changes]
     B --> C[Save Snapshot]
     C --> D[Continue Working]
