@@ -782,3 +782,14 @@ Create an app (or reuse one) and manage it with Git:
 **Goal:** Practice the complete Git workflow from local to GitHub.
 
 ---
+
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
+
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa

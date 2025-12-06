@@ -606,3 +606,13 @@ Build a simple task dashboard backed by the local API:
 
 ---
 
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
+
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa

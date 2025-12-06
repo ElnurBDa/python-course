@@ -558,4 +558,13 @@ You now have the pieces to turn small scripts into **serious tools** that are de
 
 ---
 
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
 
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa

@@ -112,4 +112,13 @@ Your favorite number 42 squared is 1764.
 
 ---
 
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
 
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa
