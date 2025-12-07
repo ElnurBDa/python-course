@@ -355,6 +355,80 @@ This OOP layer will make it easier to structure file, database, and web projects
 
 ---
 
+Solution
+========
+`task.py`
+```python
+class Task:
+    def __init__(self, title, completed, priority="normal"):
+        self.title = title
+        self.completed = completed
+        self.priority = priority
+
+    def mark_done(self):
+        self.completed = True
+
+    def describe(self,to_print=False):
+        description = f"{self.title} done: {self.completed} with priority of {self.priority}"
+        if to_print:
+            print(description)
+        return description
+
+class TaskList:
+    def __init__(self, tasks=[]):
+        self.tasks = tasks
+
+    def add_task(self, task):
+        print(f"task named {task.title} is added")
+        self.tasks.append(task)
+
+    def list_pending(self):
+        for t in self.tasks:
+            if not t.completed:
+                print(f"{t.title} is yet to be completed")
+
+```
+
+---
+
+Solution
+========
+`main.py`
+```python
+from task import Task as T
+from task import TaskList as TL
+# The tasks
+t1 = T("2+2", False)
+t2 = T("Shopping", True)
+t3 = T("make a farm in MC", False, "critical") 
+
+# Mark Done Function works!!!
+print(t1.completed)
+t1.mark_done()
+print(t1.completed)
+
+# Descriptions?
+text = t2.describe(to_print=True)
+print(text)
+
+
+# Task List
+
+print("-"*10)
+tl = TL([t1,t2])
+tl.add_task(t3)
+
+#for t in tl.tasks:
+#    print(t.title)
+
+
+tl.list_pending()
+
+```
+
+
+---
+
 <!-- end_slide -->
 <!-- font_size: 5 -->
 <!-- alignment: center -->
