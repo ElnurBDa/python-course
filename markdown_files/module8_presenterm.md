@@ -18,9 +18,6 @@ We will go in three stages:
 2. **HTTP & APIs** — requests, responses, status codes, and JSON  
 3. **Python as a web client/server** — using `requests` and serving simple pages  
 
-Keep this question in mind:  
-> “What exactly is traveling over the network right now — HTML or JSON?”
-
 ---
 
 How the Web Works
@@ -185,32 +182,222 @@ Guideline: keep structure (HTML) separate from style (CSS) for clarity.
 
 ---
 
-JavaScript in HTML
-==================
-JavaScript brings interactivity.
+JavaScript — Introduction
+==========================
 
-Common patterns:
-- Inline handlers: `<button onclick="alert('Hi')">`
-- `<script>` tag inside HTML file
-- External file: `<script src="app.js"></script>`
+<!-- column_layout: [1, 2] -->
+
+<!-- column: 0 -->
+JavaScript is a **programming language** that runs in web browsers (and servers).
+
+Key characteristics:
+- **Dynamic** — variables can change types
+- **Interpreted** — runs directly without compilation
+- **Event-driven** — responds to user actions (clicks, typing, etc.)
+- **Versatile** — used for both frontend (browser) and backend (Node.js)
+
+Why JavaScript matters:
+- Makes web pages **interactive**
+- Can update page content without reloading
+- Communicates with servers (APIs)
+- Essential for modern web development
+
+Think of it as the "brain" that makes static HTML pages come alive.
+<!-- column: 1 -->
+
+![](assets/js.jpg)
+<!-- reset_layout -->
+
+---
+
+JavaScript Basics — Variables & Types
+======================================
+JavaScript has similar concepts to Python, with different syntax.
+
+**Variables:**
+```javascript
+let name = "Alice";        // can be reassigned
+const age = 25;            // constant, cannot be reassigned
+var oldStyle = "avoid";     // old way, avoid in modern code
+```
+
+**Data Types:**
+```javascript
+let text = "Hello";         // string
+let number = 42;            // number
+let isActive = true;        // boolean
+let data = null;            // null (no value)
+let items = [1, 2, 3];      // array (like Python list)
+let user = {                // object (like Python dict)
+    name: "Alice",
+    age: 25
+};
+```
+
+**Functions:**
+```javascript
+function greet(name) {
+    return "Hello, " + name;
+}
+
+// Arrow function (modern style)
+const greet2 = (name) => {
+    return "Hello, " + name;
+};
+```
+
+---
+
+JavaScript vs Node.js
+=====================
+<!-- column_layout: [1, 1] -->
+
+<!-- column: 0 -->
+
+**JavaScript (Browser)**
+- Runs in the **browser**
+- Can manipulate HTML/CSS
+- Access to `document`, `window` objects
+- Cannot access file system (security)
+- Used for: interactive web pages, form validation, animations
 
 Example:
+```javascript
+// Runs in browser
+document.getElementById("btn").onclick = function() {
+    alert("Clicked!");
+};
+```
+
+<!-- column: 1 -->
+
+**Node.js (Server)**
+- JavaScript runtime for **servers**
+- Built on Chrome's V8 engine
+- Can access file system, databases
+- No `document` or `window` objects
+- Used for: web servers, APIs, command-line tools
+
+Example:
+```javascript
+// Runs on server (Node.js)
+const fs = require('fs');
+fs.readFile('data.txt', 'utf8', (err, data) => {
+    console.log(data);
+});
+```
+
+**Key Point:** Same language, different environments. In this module, we focus on **browser JavaScript**.
+
+<!-- reset_layout -->
+
+---
+
+JavaScript in HTML
+==================
+JavaScript brings interactivity to web pages.
+
+<!-- column_layout: [2, 3] -->
+
+<!-- column: 0 -->
+**Ways to include JavaScript:**
+
+1. **Inline** (simple actions):
+```html
+<button onclick="alert('Hello!')">Click me</button>
+```
+
+2. **Script tag** (inside HTML):
+```html
+<script>
+    console.log("Page loaded!");
+</script>
+```
+
+3. **External file** (recommended):
+```html
+<script src="app.js"></script>
+```
+<!-- column: 1 -->
+
+**Simple example:**
 
 ```html
 <body>
-  <p id="greeting">Loading...</p>
-  <button id="btn">Say hi</button>
+  <p id="message">Click the button</p>
+  <button onclick="changeText()">Click me</button>
 
   <script>
-    const message = "Hello from JS!";
-    document.getElementById("btn").addEventListener("click", () => {
-      document.getElementById("greeting").textContent = message;
-    });
+    function changeText() {
+      document.getElementById("message").textContent = "Hello from JavaScript!";
+    }
   </script>
 </body>
 ```
 
-Place scripts near the end of `<body>` so HTML loads before JS runs.
+Place `<script>` tags near the end of `<body>` so HTML loads first.
+
+<!-- reset_layout -->
+
+---
+
+JavaScript — Practical Example
+===============================
+Here's a more complete example that demonstrates common patterns:
+
+<!-- column_layout: [5, 2] -->
+
+<!-- column: 0 -->
+```html
+<body>
+  <h1>Counter App</h1>
+  <p>Count: <span id="count">0</span></p>
+  <button id="increment">+</button>
+  <button id="decrement">-</button>
+  <button id="reset">Reset</button>
+
+  <script>
+    let count = 0;
+    const countDisplay = document.getElementById("count");
+    const incrementBtn = document.getElementById("increment");
+    const decrementBtn = document.getElementById("decrement");
+    const resetBtn = document.getElementById("reset");
+
+    function updateDisplay() {
+      countDisplay.textContent = count;
+    }
+
+    incrementBtn.addEventListener("click", () => {
+      count++;
+      updateDisplay();
+    });
+
+    decrementBtn.addEventListener("click", () => {
+      count--;
+      updateDisplay();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      count = 0;
+      updateDisplay();
+    });
+  </script>
+</body>
+```
+<!-- column: 1 -->
+
+
+**What's happening:**
+1. **Variables** (`count`) store state
+2. **`getElementById()`** finds HTML elements
+3. **`addEventListener()`** responds to clicks
+4. **`textContent`** updates what's displayed
+5. **Functions** organize the logic
+
+
+This pattern (select element → listen for events → update content) is the foundation of interactive web pages.
+
+<!-- reset_layout -->
 
 ---
 
@@ -606,13 +793,3 @@ Build a simple task dashboard backed by the local API:
 
 ---
 
-<!-- end_slide -->
-<!-- font_size: 5 -->
-<!-- alignment: center -->
-<!-- jump_to_middle -->
-
-# Thanks!
-
-<!-- font_size: 1 -->
-
-#### By ElnurBDa

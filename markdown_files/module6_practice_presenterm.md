@@ -242,13 +242,4 @@ stores tasks in a JSON‑like text format (you can invent a simple format) and u
 
 ---
 
-<!-- end_slide -->
-<!-- font_size: 5 -->
-<!-- alignment: center -->
-<!-- jump_to_middle -->
 
-# Thanks!
-
-<!-- font_size: 1 -->
-
-#### By ElnurBDa
