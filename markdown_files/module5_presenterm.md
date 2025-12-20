@@ -355,3 +355,13 @@ This OOP layer will make it easier to structure file, database, and web projects
 
 ---
 
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
+
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa

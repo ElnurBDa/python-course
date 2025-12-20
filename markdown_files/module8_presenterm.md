@@ -780,16 +780,20 @@ Run `python server.py` from the folder containing `website/`.
 
 ---
 
-Mini Project
-============
-Build a simple task dashboard backed by the local API:
-
-1. Create `index.html` that renders a table of tasks from `data.json`.
-2. Write `fetch_tasks.py` that calls `http://localhost:3000/api/tasks?completed=false` and saves the JSON payload.
-3. Add a second button on the page that loads tasks marked as completed (read from another JSON file or switch endpoints dynamically).
-4. Serve the folder via `python -m http.server` and demo reloading after rerunning the fetch script.
+Meme Slide
+==========
 
 ![](assets/html-css-meme.jpg)
 
 ---
 
+<!-- end_slide -->
+<!-- font_size: 5 -->
+<!-- alignment: center -->
+<!-- jump_to_middle -->
+
+# Thanks!
+
+<!-- font_size: 1 -->
+
+#### By ElnurBDa
