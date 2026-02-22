@@ -27,3 +27,6 @@ pdftk practice.pdf cat 1 2 3 4 5 6 7 8 9 11 13 15 47 output selected_slides.pdf
 ```bash
 pdfunite section*.pdf combined_manual.pdf
 ```
+
+## More info about presenterm from My Blog:
+- https://elnurbda.com/posts/45-presenterm/

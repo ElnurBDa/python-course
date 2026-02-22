@@ -4,7 +4,7 @@ pkgs.mkShell {
   packages = with pkgs; [
     # PDF tools
     pdftk
-    poppler_utils
+    poppler-utils
     # For presentations
     kitty
     mermaid-cli
